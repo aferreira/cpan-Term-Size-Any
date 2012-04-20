@@ -4,7 +4,7 @@ package Term::Size::Any;
 use strict;
 use vars qw( $VERSION );
 
-$VERSION = '0.001';
+$VERSION = '0.002';
 
 sub _require_any {
     my $package;

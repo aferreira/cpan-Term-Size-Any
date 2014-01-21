@@ -1,4 +1,3 @@
-
 use 5.006;
 use strict;
 use warnings;
@@ -39,5 +38,14 @@ WriteMakefile(
     ABSTRACT_FROM => 'lib/Term/Size/Any.pod',
     AUTHOR => 'Adriano R. Ferreira <ferreira@cpan.org>',
     LICENSE => 'perl',
-
+    META_MERGE => {
+        'meta-spec' => { version => 2 },
+        resources => {
+            repository => {
+                type => 'git',
+                url => 'https://github.com/aferreira/cpan-Term-Size-Any.git',
+                web => 'https://github.com/aferreira/cpan-Term-Size-Any',
+            },
+        },
+    },
 );

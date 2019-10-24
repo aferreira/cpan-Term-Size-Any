@@ -2,7 +2,7 @@ use 5.006;
 use strict;
 use warnings;
 
-use ExtUtils::MakeMaker 6.31; # XXX yes, that's not a nice thing to do
+use ExtUtils::MakeMaker 6.46; # XXX yes, that's not a nice thing to do
 
 # one of Term::Size, Term::Size::Perl, Term::Size::ReadKey, 
 # or Term::Size::Win32 should be available

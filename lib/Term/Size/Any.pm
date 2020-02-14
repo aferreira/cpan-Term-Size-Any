@@ -6,12 +6,15 @@ use vars qw( $VERSION );
 
 $VERSION = '0.002';
 
+my $PACKAGE;
+
 sub _require_any {
-    my $package;
+    return $PACKAGE
+        if $PACKAGE;
 
     if ( $^O eq 'MSWin32' ) {
         require Term::Size::Win32;
-        $package = 'Term::Size::Win32';
+        $PACKAGE = 'Term::Size::Win32';
 
     } else {
         #require Best;
@@ -19,11 +22,12 @@ sub _require_any {
         #Best->import( @modules );
         #$package = Best->which( @modules );
         require Term::Size::Perl;
-        $package = 'Term::Size::Perl';
+        $PACKAGE = 'Term::Size::Perl';
 
     }
-    $package->import( qw( chars pixels ) ); # allows Term::Size::Any::chars
-    return $package;
+
+    $PACKAGE->import( qw( chars pixels ) ); # allows Term::Size::Any::chars
+    return $PACKAGE;
 }
 
 sub import {
@@ -32,6 +36,16 @@ sub import {
     unshift @_, $package;
     my $import_sub = $package->can('import');
     goto &$import_sub;
+}
+
+sub chars {
+    _require_any;
+    goto &chars;
+}
+
+sub pixels {
+    _require_any;
+    goto &pixels;
 }
 
 1;
